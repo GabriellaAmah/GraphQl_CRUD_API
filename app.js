@@ -5,10 +5,13 @@ import {graphqlHTTP} from 'express-graphql';
 import bookSchema from './graphQlSchema/schema.js';
 import bookResolver from './graphqlResolver/resolver.js';
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(cors())
 
 app.use('/graphql', graphqlHTTP({
     schema : bookSchema,
